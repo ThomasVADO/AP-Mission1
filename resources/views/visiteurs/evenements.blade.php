@@ -11,29 +11,30 @@
        
           </div>  
         </header>
-        <div class="section background-white"> 
-          <div class="line">  
-            <h2 class="text-size-40 margin-bottom-30">Premier</h2>
-            <hr class="break-small background-primary margin-bottom-30">
-          
+        <div class="section background-white">
+        @foreach ($events as $event)
+          <div class="line">
+            <hr class="break-small background-primary margin-bottom-10">
+            <h2 class="text-size-40 margin-bottom-10">              
+              {{ $event->intitule }} / {{ $event->lieu }}<!-- Intitulé de l'évènement et lieu -->
+            </h2>
+            <h2 class="text-size-40 margin-bottom-10">              
+              {{ $event->date_deb }} / {{ $event->date_fin }}<!-- date de début et de fin de l'évènement -->
+            </h2>
             <div class="line margin-top-30">
               <div class="margin">
+              <div class="s-12 m-6 l-6 margin-bottom-70">
+                    <img src="{{ asset($event->url_image) }}" alt="{{ $event->intitule }}" style="max-width: 100%; height: auto;">
+                  </div>
                 <div class="s-12 m-6 l-6">
-                  <img src="{{ asset('/img/evenements/eve1.jpg') }}" alt="">
-                
-                </div>
-                <div class="s-12 m-6 l-6">
-                  <p class="margin-top-30">
-                  Nam liber tempor cum soluta nobis eleifend option congue nihil imperdiet doming id quod mazim placerat facer possim assum. Typi non habent claritatem insitam; 
-                  est usus legentis in iis qui facit eorum claritatem. Investigationes demonstraverunt lectores legere me lius quod ii legunt saepius. 
-                  Claritas est etiam processus dynamicus, qui sequitur mutationem consuetudium lectorum. Mirum est notare quam littera gothica, quam nunc 
-                  putamus parum claram, anteposuerit litterarum formas humanitatis per seacula quarta decima et quinta decima. Eodem modo typi, qui nunc 
-                  nobis videntur parum clari, fiant sollemnes in futurum.
+                  <p class="text-size-20 margin-top-30">
+                  {{ $event->details }}<!-- details de l'évènement -->
                   </p>
                 </div>
               </div>
             </div>      
           </div>
+        @endforeach
         </div> 
       </article>
     <!-- termine le corps de la page -->

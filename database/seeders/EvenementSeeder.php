@@ -23,14 +23,23 @@ class EvenementSeeder extends Seeder
         $faker = Faker::create();
 
 
-        for ($i = 0; $i < 10; $i++) {
-
+        for ($i = 1; $i <= 10; $i++) {
             $date_eve = $faker->date($format = 'Y-m-d', $max = 'now');
             $town = $faker->city;
             $intitule = $faker->numerify('Evenement ##');
             $details = $faker->realText($maxNbChars = 200, $indexSize = 2);
-
-            Evenement::insert([['intitule' => $intitule, 'date_deb' => $date_eve, 'date_fin' => $date_eve, 'details' => $details, 'lieu' => $town]]);
-        }
+            $imageUrl = "img/evenements/eve$i.jpg"; // Ligne ajoutée
+        
+            Evenement::insert([
+                [
+                    'intitule' => $intitule,
+                    'date_deb' => $date_eve,
+                    'date_fin' => $date_eve,
+                    'details' => $details,
+                    'lieu' => $town,
+                    'url_image' => $imageUrl // Ligne ajoutée
+                ]
+            ]);
+        }  
     }
 }
